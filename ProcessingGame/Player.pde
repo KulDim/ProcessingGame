@@ -5,6 +5,10 @@ class Player
   float y = 0;
   float playerSpeed = 0;
   IntDict keysControl = new IntDict();
+  float anglex = 0;
+  float angley = 0;
+  float beamLength = 0;
+  float angle = 0;
   
   Player(String namePlayer)
   {
@@ -20,6 +24,19 @@ class Player
   PVector position()
   {
      return new PVector(x, y);
+  }
+  
+  void rotation(float beamLength, float angle)
+  {
+    this.beamLength = beamLength;
+    this.angle = angle;
+  }
+  
+  PVector rotation()
+  {
+    this.anglex = this.x + this.beamLength * cos(this.angle);
+    this.angley = this.y + this.beamLength * sin(this.angle);
+    return new PVector(this.anglex, this.angley);
   }
   
   void speed(float playerSpeed)
