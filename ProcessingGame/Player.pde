@@ -49,12 +49,14 @@ class Player
     return this.playerSpeed;
   }
   
-  void control(int right, int left, int up, int down)
+  void control(int right, int left, int up, int down, int q, int e)
   {
     this.keysControl.set("RIGHT", right);
     this.keysControl.set("LEFT",  left);
     this.keysControl.set("UP",    up);
     this.keysControl.set("DOWN",  down);
+    this.keysControl.set("Q",  q);
+    this.keysControl.set("E",  e);
   }
   
   IntDict control()
@@ -66,22 +68,43 @@ class Player
   {
     if(this.keysControl.size() == 0) return;
     float playerSpeed = this.playerSpeed / frameRate;
+    // !!!! formyla    
+    float angleSpeed = (this.playerSpeed/10) / frameRate;
+    
+    float sin_a = sin(this.angle);
+    float cos_a = cos(this.angle);
     
     if(checkPressedKey(this.keysControl.get("RIGHT")))
     {
-      y -= playerSpeed;
+      println("RIGHT");
+      this.x -= playerSpeed * sin_a;
+      this.y += playerSpeed * cos_a;
     }
     if(checkPressedKey(this.keysControl.get("LEFT")))
     {
-      x += playerSpeed;
+      println("LEFT");
+      this.x += playerSpeed * sin_a;
+      this.y -= playerSpeed * cos_a;
     }
     if(checkPressedKey(this.keysControl.get("UP")))
     {
-      x -= playerSpeed;
+      println("UP");
+      this.x += playerSpeed * cos_a;
+      this.y += playerSpeed * sin_a;
     }
     if(checkPressedKey(this.keysControl.get("DOWN")))
     {
-      y += playerSpeed;
+      println("DOWN");
+      this.x -= playerSpeed * cos_a;
+      this.y -= playerSpeed * sin_a;
+    }
+    if(checkPressedKey(this.keysControl.get("Q")))
+    {
+      this.angle -= angleSpeed;
+    }
+    if(checkPressedKey(this.keysControl.get("E")))
+    {
+      this.angle += angleSpeed;
     }
   }
 };
