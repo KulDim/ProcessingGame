@@ -1,4 +1,5 @@
 Player player = new Player("Player");
+Map map = new Map();
 
 void setup()
 {

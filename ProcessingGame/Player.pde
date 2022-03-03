@@ -76,25 +76,25 @@ class Player
     
     if(checkPressedKey(this.keysControl.get("RIGHT")))
     {
-      println("RIGHT");
+      //println("RIGHT");
       this.x -= playerSpeed * sin_a;
       this.y += playerSpeed * cos_a;
     }
     if(checkPressedKey(this.keysControl.get("LEFT")))
     {
-      println("LEFT");
+      //println("LEFT");
       this.x += playerSpeed * sin_a;
       this.y -= playerSpeed * cos_a;
     }
     if(checkPressedKey(this.keysControl.get("UP")))
     {
-      println("UP");
+      //println("UP");
       this.x += playerSpeed * cos_a;
       this.y += playerSpeed * sin_a;
     }
     if(checkPressedKey(this.keysControl.get("DOWN")))
     {
-      println("DOWN");
+      //println("DOWN");
       this.x -= playerSpeed * cos_a;
       this.y -= playerSpeed * sin_a;
     }
